@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace BankLibrary
 {
-    class BankAccount
+  public  class BankAccount
     {
         public string Number { get; }
         public string Owner { get; set; }
@@ -30,10 +30,10 @@ namespace ConsoleApp1
 
         private List<Transaction> allTransactions  = new List<Transaction>();
 
-        public BankAccount(string name)
+        public BankAccount(string name,decimal initialBalance)
         {
             this.Owner = name;
-         
+            MakeDeposit(initialBalance,DateTime.Now, "Initial Balance");
             this.Number = accountNumberSeed.ToString();
             accountNumberSeed++;
         }
@@ -64,6 +64,19 @@ namespace ConsoleApp1
 
              var withdrawal = new Transaction(-amount, date, note);
             allTransactions.Add(withdrawal);
+        }
+
+        public string GetAccountHistory()
+        {
+            var report = new StringBuilder();
+
+            report.AppendLine("Date\tAmount\tNote");
+            foreach(var item in allTransactions)
+            {
+                report.AppendLine($"{item.Date.ToShortDateString()}\t{item.Amount}\t{item.Notes}");
+            }
+
+            return report.ToString();
         }
 
 

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace BankLibrary
 {
-     class Transaction
+    public class Transaction
     {
         public decimal Amount { get; }
 

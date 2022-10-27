@@ -1,17 +1,18 @@
 ﻿
-using ConsoleApp1;
-using System;
-
+using BankLibrary;
 
 namespace MySuperBank
 {
-    class Program
+   public class Program
     {
         static void Main(string[] args)
         {
             var account = new BankAccount("kendra", 1000);
 
-            Console.WriteLine(account.Balance);
+            Console.Write(account.Owner);
+            
+
+
         }
     }
 }
